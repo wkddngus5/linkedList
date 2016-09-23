@@ -87,6 +87,29 @@ void deleteNode(list_t* list, node_t* prevNode, node_t* targetNode){
 	//free(targetNode);
 }
 
+void goNext(node_t* nowNode){
+	if (nowNode->next){
+		goNext(nowNode->next);
+	}
+	else{
+		//printf("%d", nowNode->data);
+	}
+	printf("%d\n", nowNode->data);
+}
+
+void printListReverse(list_t* list){
+	if (list == NULL) return;
+	node_t* nowNode = list->head;
+	if (nowNode->next){
+		goNext(nowNode);
+	}
+	else{
+		printf("%d\n", nowNode->data);
+	}
+}
+
+
+
 int main(viod){
 
 	list.head = NULL;
@@ -110,12 +133,11 @@ int main(viod){
 	insertNode(&list, searchNode(&list, 40), node+6);
 	node[7].data = 5;
 	insertNode(&list, NULL, node + 7);
-
-	deleteNode(&list, searchNode(&list, 50), searchNode(&list, 40));
+	printListReverse(&list);
 	
-	
-
+	printf("\n\n\n");
 	printList(&list);
+
 
 
 	free(node);
